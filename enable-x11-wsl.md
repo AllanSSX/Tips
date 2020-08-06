@@ -15,7 +15,7 @@ sudo apt install ssh xauth xorg x11-apps
 
 Go to the folder contains `ssh_config` file at `/etc/ssh`.
 
-Edit `ssh_config` as root (USE `sudo`). Inside `ssh_config`, remove the hash `#` in the lines `ForwardAgent`, `ForwardX11`, `ForwardX11Trusted`, and set the corresponding arguments to `yes`.
+Edit `ssh_config` as root (`sudo`). Inside `ssh_config`, remove the hash `#` in the lines `ForwardAgent`, `ForwardX11`, `ForwardX11Trusted`, and set the corresponding arguments to `yes`.
 
 ``` bash
 # /etc/ssh/ssh_config
@@ -43,7 +43,7 @@ Also remove the front hash `#` before `Port 22` and `Protocol 2`, and also appen
     XauthLocation /usr/bin/xauth
 ```
 
-## 4 - Export DISPLAY using .bashrc
+## 4 - Export DISPLAY using `.bashrc`
 
 Go to folder `~` or `$HOME`, append `export DISPLAY=localhost:0` to your `.bashrc` file and save it.
 
@@ -51,10 +51,10 @@ Go to folder `~` or `$HOME`, append `export DISPLAY=localhost:0` to your `.bashr
 # ~/.bashrc
 ...
 ...
-export DISPLAY=localhost:0
+export DISPLAY=localhost:0.0
 ```
 
-## 5 - Create `~/.Xauthority` file.
+## 5 - [optional] Create `~/.Xauthority` file.
 
 By default, the `~/.Xauthority` file is not always created and can lead to this error message:
 
@@ -68,7 +68,7 @@ As its quite boring to have this message at each connexion, it can be resolved b
 xauth generate :0 .
 ```
 
-## 6 - Set `$LC` and `$LANG`
+## 6 - [optional] Set `$LC` and `$LANG`
 
 After the `ssh` connexion, you can receive this message:
 
@@ -76,10 +76,10 @@ After the `ssh` connexion, you can receive this message:
 /usr/bin/manpath: can't set the locale; make sure $LC_* and $LANG are correct
 ```
 
-The solution is to generate locales for your $LANG defined in this file: `/etc/environment`. The locale generated for the system is in this file: `/etc/default/locale`.
+The solution is to generate locales for your `$LANG` defined in this file: `/etc/environment`. The locale generated for the system is in this file: `/etc/default/locale`.
 
 
-To do thaht, run the command `sudo dpkg-reconfigure locales` or edit `/etc/default/locale` as root. Mine looks like this:
+To do that, run the command `sudo dpkg-reconfigure locales` or edit `/etc/default/locale` as root. Mine looks like this:
 
 
 ```bash
