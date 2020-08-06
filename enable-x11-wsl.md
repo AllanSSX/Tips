@@ -68,7 +68,26 @@ As its quite boring to have this message at each connexion, it can be resolved b
 xauth generate :0 .
 ```
 
-## 6 - Start `Xming` and connect to the host with x11 forwarding 
+## 6 - Set `$LC` and `$LANG`
+
+After the `ssh` connexion, you can receive this message:
+
+```bash
+/usr/bin/manpath: can't set the locale; make sure $LC_* and $LANG are correct
+```
+
+The solution is to generate locales for your $LANG defined in this file: `/etc/environment`. The locale generated for the system is in this file: `/etc/default/locale`.
+
+
+To do thaht, run the command `sudo dpkg-reconfigure locales` or edit `/etc/default/locale` as root. Mine looks like this:
+
+
+```bash
+LANG=en_US.utf-8
+LC_ALL=en_US.utf-8
+```
+
+## 7 - Start `Xming` and connect to the host with x11 forwarding 
 
 Restart your bash shell, open your `Xming` program and use `ssh -X yourusername@yourhost`. Then enjoy the GUI environment.
 
