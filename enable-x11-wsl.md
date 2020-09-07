@@ -66,7 +66,7 @@ Also remove the front hash `#` before `Port 22` and `Protocol 2`, and also appen
     XauthLocation /usr/bin/xauth
 ```
 
-## 2 - [optional] Create `~/.Xauthority` file.
+### 2 - [optional] Create `~/.Xauthority` file.
 
 By default, the `~/.Xauthority` file is not always created and can lead to this error message:
 
@@ -80,7 +80,7 @@ As its quite boring to have this message at each connexion, it can be resolved b
 xauth generate :0 .
 ```
 
-## 3 - [optional] Set `$LC` and `$LANG`
+### 3 - [optional] Set `$LC` and `$LANG`
 
 After the `ssh` connexion, you can receive this message:
 
