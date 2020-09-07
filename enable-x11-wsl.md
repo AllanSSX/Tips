@@ -5,13 +5,36 @@
 - [VcXsrv](https://sourceforge.net/projects/vcxsrv/) - still in active development
 - [XMing](https://sourceforge.net/projects/xming/) - no update since 2016
 
-## 2 -Install Ubuntu dependencies
+## 2 -Install Ubuntu dependencies on you computer
 
 ```bash
 sudo apt install ssh xauth xorg x11-apps
 ```
 
-## 3 - Configure x11 forwarding through ssh
+## 3 - Export DISPLAY in your local `.bashrc`
+
+Go to folder `~` or `$HOME` on you local computer, append `export DISPLAY=localhost:0` to your `.bashrc` file and save it.
+
+``` bash
+# ~/.bashrc
+...
+...
+export DISPLAY=localhost:0.0
+```
+
+## 4 - Start `Xming` and connect to the host with x11 forwarding
+
+Restart your bash shell, open your `Xming` program and use `ssh -X yourusername@yourhost`. Then enjoy the GUI environment.
+
+``` bash
+ssh -X yourusername@yourhost
+```
+
+## 5 - Debug
+
+If you experience troubles using x11 forwarding with the previous steps, look at the following options that will may help you.
+
+### 1 - [optional] Full configuration of x11 forwarding through ssh
 
 Go to the folder contains `ssh_config` file at `/etc/ssh`.
 
@@ -43,18 +66,7 @@ Also remove the front hash `#` before `Port 22` and `Protocol 2`, and also appen
     XauthLocation /usr/bin/xauth
 ```
 
-## 4 - Export DISPLAY using `.bashrc`
-
-Go to folder `~` or `$HOME`, append `export DISPLAY=localhost:0` to your `.bashrc` file and save it.
-
-``` bash
-# ~/.bashrc
-...
-...
-export DISPLAY=localhost:0.0
-```
-
-## 5 - [optional] Create `~/.Xauthority` file.
+## 2 - [optional] Create `~/.Xauthority` file.
 
 By default, the `~/.Xauthority` file is not always created and can lead to this error message:
 
@@ -68,7 +80,7 @@ As its quite boring to have this message at each connexion, it can be resolved b
 xauth generate :0 .
 ```
 
-## 6 - [optional] Set `$LC` and `$LANG`
+## 3 - [optional] Set `$LC` and `$LANG`
 
 After the `ssh` connexion, you can receive this message:
 
@@ -85,12 +97,4 @@ To do that, run the command `sudo dpkg-reconfigure locales` or edit `/etc/defaul
 ```bash
 LANG=en_US.utf-8
 LC_ALL=en_US.utf-8
-```
-
-## 7 - Start `Xming` and connect to the host with x11 forwarding 
-
-Restart your bash shell, open your `Xming` program and use `ssh -X yourusername@yourhost`. Then enjoy the GUI environment.
-
-``` bash
-ssh -X yourusername@yourhost
 ```
