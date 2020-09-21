@@ -77,8 +77,11 @@ Warning: No xauth data; using fake authentication data for X11 forwarding
 As its quite boring to have this message at each connexion, it can be resolved by this command:
 
 ``` bash
-xauth generate :0 .
+xauth generate localhost:0.0 .
 ```
+
+Remember to start VcXsrv or Xming before running the command otherwise it will send you an error message.
+
 
 ### 3 - [optional] Set `$LC` and `$LANG`
 
@@ -98,3 +101,5 @@ To do that, run the command `sudo dpkg-reconfigure locales` or edit `/etc/defaul
 LANG=en_US.utf-8
 LC_ALL=en_US.utf-8
 ```
+
+After, restart your Linux system to finish the configuration.
