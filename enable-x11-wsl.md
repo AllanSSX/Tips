@@ -8,12 +8,14 @@
 ## 2 -Install Ubuntu dependencies on you computer
 
 ```bash
+sudo apt get update
+sudo apt get upgrade
 sudo apt install ssh xauth xorg x11-apps
 ```
 
 ## 3 - Export DISPLAY in your local `.bashrc`
 
-Go to folder `~` or `$HOME` on you local computer, append `export DISPLAY=localhost:0` to your `.bashrc` file and save it.
+Go to folder `~` or `$HOME` on you local computer, append `export DISPLAY=localhost:0.0` to your `.bashrc` file and save it.
 
 ``` bash
 # ~/.bashrc
@@ -22,12 +24,12 @@ Go to folder `~` or `$HOME` on you local computer, append `export DISPLAY=localh
 export DISPLAY=localhost:0.0
 ```
 
-## 4 - Start `Xming` and connect to the host with x11 forwarding
+## 4 - Start `VcXsrv` and connect to the host with x11 forwarding
 
-Restart your bash shell, open your `Xming` program and use `ssh -X yourusername@yourhost`. Then enjoy the GUI environment.
+Restart your bash shell, open your `VcXsrv` program and use `ssh -XY yourusername@yourhost`. Then enjoy the GUI environment.
 
 ``` bash
-ssh -X yourusername@yourhost
+ssh -XY yourusername@yourhost
 ```
 
 ## 5 - Debug
